@@ -1,0 +1,20 @@
+#Step 1
+import random as rand
+target=rand.randint(1,100);
+
+#Step 2, 3, and Bonus
+Hit=False;
+attempts=0;
+while not Hit:
+    if attempts>=10:
+        print("Game over - better luck next time!");
+        break;
+    num=int(input("Guess a whole number between 1 and 100.\n"));
+    attempts+=1;
+    if num>target:
+        print("Too high!  Try again.\n");
+    elif num<target:
+        print("Too low!  Try again.\n");
+    elif num==target:
+        print("Congradulations!  You guessed it in "+ str(attempts) + " tries.");
+        Hit=True;
