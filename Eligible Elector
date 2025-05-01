@@ -1,0 +1,11 @@
+#Step 1
+age=int(input("How old are you?\n"));
+
+#Step 2
+if age>=18:
+    print("Congradulations: you are old enough to vote.  Go make a difference!");
+elif age<0:
+    print("You aren't born yet.  Please ask again once you're born.");
+else:
+    print("You are not eligible to vote yet - only " + str(18-age) + " more years to go!")
+1
