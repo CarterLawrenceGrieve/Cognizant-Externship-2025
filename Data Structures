@@ -1,0 +1,30 @@
+#"Hands on Python Data Structures"
+#Task1
+fruits=["lemon","lime","pineapple","orange","grapefruit"];
+print("Original List: ", fruits);
+fruits.append("clementine");
+print("After adding: ", fruits);
+fruits.remove("orange");
+print("After removing: ", fruits);
+print("In reverse: ", fruits[::-1]);
+
+#Task 2
+me={
+    "name":"Carter",
+    "age":"28",
+    "city":"Lake Bluff"
+};
+me.update({"favorite color":"red"});
+me.update({"city":"Chicago"});
+
+print("Keys: ",end="");
+for x in me:
+    print(str(x) + ", ",end="");
+print("\nValues: ",end="");
+for x in me:
+    print(str(me[x]) + ", ",end="");
+
+#Task 3
+fav=("The Wizard of Oz", "For Now", "His Dark Materials");
+#fav[1]="Epiphany";
+print("\nLength of tuple: " + str(len(fav)));
