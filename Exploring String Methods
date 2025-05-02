@@ -1,0 +1,26 @@
+#Task 1
+phrase="Python is amazing!"
+
+six=phrase[:6];
+word=phrase[-8:-1];
+rev=phrase[::-1];
+
+print("First six characters: " + six);
+print("The word \"amazing\": " + word);
+print("Phrase reversed: " + rev);
+
+#Task 2
+phrase=" hello, python world! ";
+#Not all of the below methods modify the string in-place
+print(phrase.capitalize());
+print(phrase.replace("world","universe"));
+print(phrase.upper());
+#Just in case you want them all together...
+print(phrase.strip().capitalize().replace("world","universe").upper());
+
+#Task 3
+toCheck=input("Please input a single word:");
+if toCheck[::-1] == toCheck:
+    print("Your word, " + toCheck + ", is a palindrome!");
+else:
+    print("Apologies, your word " + toCheck + ", is not a palindrome.");
