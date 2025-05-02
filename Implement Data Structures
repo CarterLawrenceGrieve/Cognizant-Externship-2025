@@ -1,0 +1,22 @@
+#""Implement your own Data Structures"
+#Step 1
+inventory={};
+print("Welcome to the inventory manager");
+
+def printCart(inv):
+    print("Current Inventory: \n");
+    cost=0;
+    for item in inv:
+        print("Item: " + item + ", Quantity: " + str(inv[item][0]) + " , Price: $" + str(inv[item][1]));
+        cost+=(inv[item][1] * inv[item][0]);
+    print("Total Value: $" + str(cost));
+
+inventory.update({"Lime":[3,.56]});
+inventory.update({"Avocado":[3,1.99]});
+inventory.update({"Tomato":[1,1.00]});
+
+printCart(inventory);
+
+print("\nAdding new item: Onion\n");
+inventory.update({"Onion":[1,.89]});
+printCart(inventory);
