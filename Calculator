@@ -1,0 +1,33 @@
+#Calculator with Exception Handling
+#logging module is too robust for our purposes here.
+
+try:   
+    choice=input("Please enter 1 for addition, 2 for subtraction, 3 for multiplication, or 4 for division.  Press 5 to exit.");
+    choice=int(choice);
+    if choice<1 or choice>5:
+        raise ValueError;
+    num1=input("Please enter first number: ");
+    num2=input("Please enter the second number: ");
+    num1=int(num1);
+    num2=int(num2);
+except ValueError as error:
+    print("ValueError: please enter a valid number.")
+    f=open("error_log.txt","a");
+    f.write(str(error) + "\n");
+    f.close();
+
+else:
+    if choice==1:
+        print("The result of addition is " + str(num1+num2));
+    elif choice==2:
+        print("The result of subtraction is " + str(num1-num2));
+    elif choice==3:
+        print("The result of multiplication is " + str(num1*num2));
+    elif choice==4:
+        try:
+            print("The result of division is " + str(num1/num2));
+        except ZeroDivisionError as error:
+            print("Invalid second number!  Cannot divide by 0.");
+            f=open("error_log.txt","a");
+            f.write(str(error) + "\n");
+            f.close();
