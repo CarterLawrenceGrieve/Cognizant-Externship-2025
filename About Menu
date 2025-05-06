@@ -1,0 +1,71 @@
+import turtle
+
+def factorial(num):
+    num=int(num);
+    if type(num)!=int:
+        return "Please enter a positive integer";
+    if num<0:
+        return "Undefined - please enter a non-negative integer";
+    elif num==0:
+        return 1;
+    else:
+        return (num * factorial(num-1));
+
+#Assuming 0,1,1,2,3,5..., with 0 being the "1st" number of the sequence:
+def fibonacci(th):
+    th=int(th);
+    if th<1:
+        return "Undefined - please enter an integer above 0";
+    elif th==1:
+        return 0;
+    elif th==2:
+        return 1;
+    else:
+        return (fibonacci(th-1) + fibonacci(th-2));
+
+#This could've definitely been done in a more pythonic manner...
+def drawTree():
+    sc=turtle.Screen();
+    sc.setup(width=400, height=500)
+    sc.bgcolor("green")
+    t=turtle.Turtle();
+    t.shape("turtle");
+    t.speed(5);
+    t.up()
+    t.right(90)
+    t.forward(100)
+    t.down()
+    t.left(90)
+    t.forward(25)
+    t.left(90)
+    t.forward(100)
+    t.right(90)
+    t.forward(100)
+    t.left(135)
+    t.forward(200)
+    t.left(90)
+    t.forward(200)
+    t.left(135)
+    t.forward(100)
+    t.right(90)
+    t.forward(100)
+    t.left(90)
+    t.forward(75)
+    return("Opened a window with my tree in it for you.");
+
+
+
+while True:
+    choice=input("Welcome!  Please press 1 to calculate a factorial, 2 to find the nth Fibonacci number, 3 to draw a recursive fractal pattern, or 4 to exit the program.");
+    choice=int(choice);
+    if choice==1:
+        num=input("Enter a number to find its factorial: ");
+        print("The factorial of " + str(num) + " is " + str(factorial(num)));
+    elif choice==2:
+        num=input("Enter the position of the Fibonacci number (first and second numbers being 0 and 1, respectively)");
+        print("The fibonacci number in position " + str(num) + " is " + str(fibonacci(num)));
+    elif choice==3:
+        print("Here's a tree.")
+        print(drawTree());
+    elif choice==4:
+        break;
