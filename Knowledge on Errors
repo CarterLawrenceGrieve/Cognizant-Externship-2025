@@ -1,0 +1,46 @@
+#Check your Knowledge on Errors
+#Task 1
+num=input("Please enter a number to divide 100 by: ");
+try:
+    num=int(num)
+    100/num;
+    print("Division of 100 by " + str(num) + " successful.");
+except ZeroDivisionError:
+    print("Invalid Input!  Cannot divide by 0.");
+except ValueError:
+    print("Invalid Input!  Please enter a number.");
+
+#Task 2
+listo=[1,2,3,4,5];
+dictionary={1:"A",2:"B"};
+try:
+    listo[400];
+    "Waluigi" + 42;
+except IndexError:
+    print("IndexError!  List index out of range.");
+try:
+    dictionary[4];
+except KeyError:
+    print("KeyError!  Key not present in dictionary.");
+try:
+    "Waluigi" + 42;
+except TypeError:
+    print("TypeError!  Unsupported operand use.");
+
+#Task 3
+num1=input("Please enter the dividend: ");
+num2=input("Please enter the divisor: ");
+try:
+    num1=int(num1);
+    num2=int(num2);
+    result=num1/num2;
+except ZeroDivisionError:
+    print("Invalid divisor: cannot divide by 0.");
+except TypeError:
+    print("Invalid input: please enter integers.");
+except ValueError:
+    print("Invalid input: please enter integers.");
+else:
+    print("The result is " + str(result) + ".");
+finally:
+    print("Thanks for using this program.");
