@@ -1,0 +1,58 @@
+#All three methods below are called by UI method to modify table, a dictionary created before UI is called.
+def printTable(table):
+    print("Total Expenses:\n");
+    for key in table:
+        print(str(key)+":\n");
+        for tup in table.get(key):
+            print("- " + str(tup[0]) + ": $" + f'{tup[1]:.2f}' + "\n");
+
+def sumByCat(table):
+    print("Summary:\n");
+    for key in table:
+        sum=0.00;
+        for tup in table.get(key):
+            sum+=tup[1];
+        print(str(key)+": $" + f'{sum:.2f}' + "\n");
+
+def addExpense(table):
+    try:
+        categ=input("Please input expense category.");
+        descrip=input("Please input expense description.");
+        cost=input("Please input expense amount.");
+        cost=float(cost);
+        val=(descrip,cost);
+        if not categ or not descrip or not cost:
+            raise ValueError;
+        if not table.get(categ):
+            table.update({categ:[val]});
+        else:
+            table.get(categ).append(val);
+    except ValueError:
+        print("Error!  Please enter appropriate values.");
+    else:
+        print("Expense added successfully.");
+
+#UI validates user choice, other input validation performed by addExpense;
+def UI(table):
+    while True:
+        print("What would you like to do?\n")
+        choice=input("Press 1 to add an expense.\nPress 2 to view all expenses.\nPress 3 to view a summary(sums of all expense categories).\nPress 4 to exit.\n");
+        try:
+            choice=int(choice);
+            if choice>4 or choice<1:
+                raise ValueError;
+        except ValueError:
+            print("Please select a valid choice.");
+        else:
+            if choice==1:
+                addExpense(table);
+            elif choice==2:
+                printTable(table);
+            elif choice==3:
+                sumByCat(table);
+            elif choice==4:
+                break;
+
+#Table keys are category entered, table values are lists of tuples
+table={};   
+UI(table);
