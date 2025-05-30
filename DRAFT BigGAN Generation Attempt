@@ -1,0 +1,26 @@
+from pytorch_pretrained_biggan import BigGAN,one_hot_from_names
+import nltk
+import torch
+from torchvision import transforms
+from PIL import Image
+nltk.download('wordnet');
+
+# Load pretrained BigGAN model
+model = BigGAN.from_pretrained("biggan-deep-256")
+
+# Generate random latent vector (noise)
+latent_vector = torch.randn(1, 128) # 128 is the size of the input vector for BigGAN
+
+class_label = one_hot_from_names(['coffee'], batch_size=1)
+
+class_label = torch.from_numpy(class_label)
+# Generate image
+with torch.no_grad():
+    generated_image = model(latent_vector,class_label,.4)
+
+# Convert the tensor to a displayable image
+generated_image = generated_image.squeeze().cpu().numpy()
+generated_image = (generated_image * 255).astype('uint8')
+Image.fromarray(generated_image,'RGB').save("img.JPEG",format="JPEG");
+
+#appears to be printing out the latent vector unaltered?
