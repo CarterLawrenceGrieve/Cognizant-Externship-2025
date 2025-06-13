@@ -1,0 +1,38 @@
+from huggingface_hub import InferenceClient
+
+TOKEN=None;
+if TOKEN==None:
+    print("WARNING: No API key entered.  Please provide your own huggingface API key (line 3) to use the following code.");
+
+client=InferenceClient(token=TOKEN);
+
+model_id="HuggingFaceH4/zephyr-7b-beta";
+temp=0.5;
+top_p=0.9;
+repetition_penalty=1.2;
+
+perm=input("For default parameters, enter 1.  To modify parameters, press 2.")
+if perm=="2":
+    sets=input("Please enter values for temperature, top p, and repetition penalty, seperated by spaces.")
+    try:
+        sets.split();
+        temp,top_p,repetition_penalty=float(sets[0].strip()),float(sets[1].strip()),float(sets[2].strip());
+    except:
+        print("Input unreadable.  Passing default model parameters.");
+    finally:
+        pass;
+
+print("Please enter text you wish the LLM to complete.\n");
+while True:
+    inp=input();
+    if inp.lower() in ["exit","goodbye","quit","bye"]:
+        print("Goodbye.");
+        break;
+    out=client.text_generation(
+        model=model_id, 
+        prompt="<|system|>Complete the text, maintaining original style and tone.  Respond in complete sentences."f"{inp}",
+        max_new_tokens=150,
+        temperature=temp,
+        top_p=top_p,
+        repetition_penalty=repetition_penalty)
+    print(out);
